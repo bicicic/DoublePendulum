@@ -1,0 +1,31 @@
+/* tslint:disable */
+/* eslint-disable */
+export const memory: WebAssembly.Memory;
+export const __wbg_pendulumsnapshot_free: (a: number, b: number) => void;
+export const __wbg_simulationworld_free: (a: number, b: number) => void;
+export const pendulumsnapshot_energy1: (a: number) => number;
+export const pendulumsnapshot_energy2: (a: number) => number;
+export const pendulumsnapshot_id: (a: number) => number;
+export const pendulumsnapshot_omega1: (a: number) => number;
+export const pendulumsnapshot_omega2: (a: number) => number;
+export const pendulumsnapshot_theta1: (a: number) => number;
+export const pendulumsnapshot_theta2: (a: number) => number;
+export const pendulumsnapshot_time: (a: number) => number;
+export const pendulumsnapshot_total_energy: (a: number) => number;
+export const pendulumsnapshot_x1: (a: number) => number;
+export const pendulumsnapshot_x2: (a: number) => number;
+export const pendulumsnapshot_y1: (a: number) => number;
+export const pendulumsnapshot_y2: (a: number) => number;
+export const simulationworld_add_pendulum: (a: number, b: number, c: number, d: number, e: number, f: number, g: number) => [number, number, number];
+export const simulationworld_advance: (a: number, b: number) => [number, number];
+export const simulationworld_clear: (a: number) => void;
+export const simulationworld_new: () => number;
+export const simulationworld_pendulum_ids: (a: number) => [number, number];
+export const simulationworld_remove_pendulum: (a: number, b: number) => number;
+export const simulationworld_snapshot: (a: number, b: number) => [number, number, number];
+export const simulationworld_step_seconds: (a: number) => number;
+export const simulationworld_time: (a: number) => number;
+export const __wbindgen_externrefs: WebAssembly.Table;
+export const __externref_table_dealloc: (a: number) => void;
+export const __wbindgen_free: (a: number, b: number, c: number) => void;
+export const __wbindgen_start: () => void;

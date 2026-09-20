@@ -1,4 +1,3 @@
-import init, { SimulationWorld } from "./pkg/double_pendulum.js";
 import { PendulumRenderer } from "./pendulum.js";
 import { EnergyChart } from "./energy-chart.js";
 
@@ -19,6 +18,7 @@ const pendulumRenderer = new PendulumRenderer(document.querySelector("#pendulum-
 const energyChart = new EnergyChart(document.querySelector("#energy-canvas"));
 
 let world;
+let SimulationWorld;
 let activeId = null;
 let activeConfig = null;
 let mode = "loading";
@@ -36,6 +36,9 @@ inputs.forEach((input) => {
 
 async function initialize() {
   try {
+    const wasmModule = await import("./pkg/double_pendulum.js");
+    SimulationWorld = wasmModule.SimulationWorld;
+    const init = wasmModule.default;
     await init();
     world = new SimulationWorld();
     setMode("idle");

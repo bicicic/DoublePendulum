@@ -34,10 +34,10 @@ RustとWebAssemblyで物理計算を行い、ブラウザのCanvasへ描画す�
 
 ```sh
 cargo test
-./build-pages.sh
+wasm-pack build --target web --release --out-dir docs/pkg
 ```
 
-`build-pages.sh` はWasmを生成した後、`wasm-pack` が作る除外設定を削除します。`docs/pkg/` はGitHub Pagesが直接読み込むため、生成されたJavaScriptとWasmもGitへ追加してください。
+`docs/pkg/` はGitHub Pagesが直接読み込むため、生成されたJavaScriptとWasmもGitへ追加してください。`docs/pkg/.gitignore` には生成物を除外するパターンを設定しないでください。
 
 ビルド後、リポジトリのルートで静的HTTPサーバーを起動します。
 
