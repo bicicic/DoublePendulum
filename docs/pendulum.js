@@ -39,14 +39,14 @@ export class PendulumRenderer {
 
     drawReference(this.context, origin, longest * scale);
     for (const item of items) {
-      this.drawTrail(item.snapshot.id, origin, scale);
+      this.drawTrail(item.snapshot.id, item.config.palette.trailHue, origin, scale);
     }
     for (const item of items) {
       drawPendulum(this.context, item, origin, scale);
     }
   }
 
-  drawTrail(id, origin, scale) {
+  drawTrail(id, hue, origin, scale) {
     const trail = this.trails.get(id) ?? [];
     if (trail.length < 2) return;
 
@@ -57,7 +57,7 @@ export class PendulumRenderer {
       const age = index / (trail.length - 1);
       const lightness = 16 + age * 58;
       const alpha = 0.08 + age * 0.82;
-      this.context.strokeStyle = `hsla(178, 75%, ${lightness}%, ${alpha})`;
+      this.context.strokeStyle = `hsla(${hue}, 75%, ${lightness}%, ${alpha})`;
       this.context.beginPath();
       this.context.moveTo(origin.x + trail[index - 1].x * scale, origin.y + trail[index - 1].y * scale);
       this.context.lineTo(origin.x + trail[index].x * scale, origin.y + trail[index].y * scale);
@@ -68,6 +68,7 @@ export class PendulumRenderer {
 
 function drawPendulum(context, item, origin, scale) {
   const { snapshot, config } = item;
+  const { palette } = config;
   const x1 = origin.x + snapshot.x1 * scale;
   const y1 = origin.y + snapshot.y1 * scale;
   const x2 = origin.x + snapshot.x2 * scale;
@@ -75,15 +76,15 @@ function drawPendulum(context, item, origin, scale) {
 
   context.lineCap = "round";
   context.lineWidth = 4;
-  context.strokeStyle = "#c8d1da";
+  context.strokeStyle = palette.rod;
   context.beginPath();
   context.moveTo(origin.x, origin.y);
   context.lineTo(x1, y1);
   context.lineTo(x2, y2);
   context.stroke();
 
-  drawMass(context, x1, y1, config.m1, "#ff9d5c");
-  drawMass(context, x2, y2, config.m2, "#55e6e0");
+  drawMass(context, x1, y1, config.m1, palette.m1);
+  drawMass(context, x2, y2, config.m2, palette.m2);
 
   context.fillStyle = "#f2f6f8";
   context.beginPath();

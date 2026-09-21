@@ -9,7 +9,7 @@
     />
     <title>Double Pendulum Lab</title>
     <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./styles.css?v=6" />
   </head>
   <body>
     <header class="site-header">
@@ -35,63 +35,57 @@
         </div>
 
         <form id="settings-form">
-          <fieldset>
-            <legend>質量</legend>
-            <label>
-              <span><i class="swatch swatch-m1"></i>m1</span>
-              <span class="input-wrap">
-                <input id="m1" name="m1" type="number" min="0.01" step="any" value="1" required />
-                <b>kg</b>
-              </span>
-            </label>
-            <label>
-              <span><i class="swatch swatch-m2"></i>m2</span>
-              <span class="input-wrap">
-                <input id="m2" name="m2" type="number" min="0.01" step="any" value="1" required />
-                <b>kg</b>
-              </span>
-            </label>
-          </fieldset>
+          <div class="parameter-grid">
+            <div class="parameter-header" aria-hidden="true">
+              <span>項目</span>
+              <span><i class="system-dot system-1"></i>振り子 1</span>
+              <span><i class="system-dot system-2"></i>振り子 2</span>
+              <span><i class="system-dot system-3"></i>振り子 3</span>
+            </div>
 
-          <fieldset>
-            <legend>腕の長さ</legend>
-            <label>
-              <span>l1</span>
-              <span class="input-wrap">
-                <input id="l1" name="l1" type="number" min="0.01" step="any" value="1" required />
-                <b>m</b>
-              </span>
-            </label>
-            <label>
-              <span>l2</span>
-              <span class="input-wrap">
-                <input id="l2" name="l2" type="number" min="0.01" step="any" value="1" required />
-                <b>m</b>
-              </span>
-            </label>
-          </fieldset>
+            <div class="parameter-row">
+              <span class="parameter-name">m1</span>
+              <label class="parameter-cell"><input aria-label="振り子1 m1" data-config-index="0" data-field="m1" type="number" min="0.01" step="any" value="1" required /><b>kg</b></label>
+              <label class="parameter-cell"><input aria-label="振り子2 m1" data-config-index="1" data-field="m1" type="number" min="0.01" step="any" value="1" required /><b>kg</b></label>
+              <label class="parameter-cell"><input aria-label="振り子3 m1" data-config-index="2" data-field="m1" type="number" min="0.01" step="any" value="1" required /><b>kg</b></label>
+            </div>
+            <div class="parameter-row">
+              <span class="parameter-name">m2</span>
+              <label class="parameter-cell"><input aria-label="振り子1 m2" data-config-index="0" data-field="m2" type="number" min="0.01" step="any" value="1" required /><b>kg</b></label>
+              <label class="parameter-cell"><input aria-label="振り子2 m2" data-config-index="1" data-field="m2" type="number" min="0.01" step="any" value="1" required /><b>kg</b></label>
+              <label class="parameter-cell"><input aria-label="振り子3 m2" data-config-index="2" data-field="m2" type="number" min="0.01" step="any" value="1" required /><b>kg</b></label>
+            </div>
 
-          <fieldset>
-            <legend>初期角度</legend>
-            <label>
-              <span>θ1</span>
-              <span class="input-wrap">
-                <input id="theta1" name="theta1" type="number" step="any" value="120" required />
-                <b>°</b>
-              </span>
-            </label>
-            <label>
-              <span>θ2</span>
-              <span class="input-wrap">
-                <input id="theta2" name="theta2" type="number" step="any" value="-10" required />
-                <b>°</b>
-              </span>
-            </label>
-          </fieldset>
+            <div class="parameter-row group-start">
+              <span class="parameter-name">l1</span>
+              <label class="parameter-cell"><input aria-label="振り子1 l1" data-config-index="0" data-field="l1" type="number" min="0.01" step="any" value="1" required /><b>m</b></label>
+              <label class="parameter-cell"><input aria-label="振り子2 l1" data-config-index="1" data-field="l1" type="number" min="0.01" step="any" value="1" required /><b>m</b></label>
+              <label class="parameter-cell"><input aria-label="振り子3 l1" data-config-index="2" data-field="l1" type="number" min="0.01" step="any" value="1" required /><b>m</b></label>
+            </div>
+            <div class="parameter-row">
+              <span class="parameter-name">l2</span>
+              <label class="parameter-cell"><input aria-label="振り子1 l2" data-config-index="0" data-field="l2" type="number" min="0.01" step="any" value="1" required /><b>m</b></label>
+              <label class="parameter-cell"><input aria-label="振り子2 l2" data-config-index="1" data-field="l2" type="number" min="0.01" step="any" value="1" required /><b>m</b></label>
+              <label class="parameter-cell"><input aria-label="振り子3 l2" data-config-index="2" data-field="l2" type="number" min="0.01" step="any" value="1" required /><b>m</b></label>
+            </div>
+
+            <div class="parameter-row group-start">
+              <span class="parameter-name">θ1</span>
+              <label class="parameter-cell"><input aria-label="振り子1 θ1" data-config-index="0" data-field="theta1" type="number" step="any" value="170" required /><b>°</b></label>
+              <label class="parameter-cell"><input aria-label="振り子2 θ1" data-config-index="1" data-field="theta1" type="number" step="any" value="170" required /><b>°</b></label>
+              <label class="parameter-cell"><input aria-label="振り子3 θ1" data-config-index="2" data-field="theta1" type="number" step="any" value="170" required /><b>°</b></label>
+            </div>
+            <div class="parameter-row">
+              <span class="parameter-name">θ2</span>
+              <label class="parameter-cell"><input aria-label="振り子1 θ2" data-config-index="0" data-field="theta2" type="number" step="any" value="120" required /><b>°</b></label>
+              <label class="parameter-cell"><input aria-label="振り子2 θ2" data-config-index="1" data-field="theta2" type="number" step="any" value="120" required /><b>°</b></label>
+              <label class="parameter-cell"><input aria-label="振り子3 θ2" data-config-index="2" data-field="theta2" type="number" step="any" value="120" required /><b>°</b></label>
+            </div>
+          </div>
 
           <div class="actions">
             <button class="primary" id="start-button" type="submit" disabled>
-              <span class="play-icon">▶</span>スタート
+              <span class="play-icon">▶</span>3台をスタート
             </button>
             <button id="pause-button" type="button" disabled>一時停止</button>
             <button id="reset-button" type="button" disabled>リセット</button>
@@ -117,12 +111,19 @@
         <div class="section-heading compact">
           <div>
             <p class="section-number">03</p>
-            <h2 id="energy-heading">エネルギー</h2>
+            <h2 id="energy-heading">エネルギー <small>振り子 <span id="energy-pendulum-number">1</span></small></h2>
           </div>
-          <div class="legend" aria-label="グラフの凡例">
-            <span><i class="line-key key-e1"></i>m1</span>
-            <span><i class="line-key key-e2"></i>m2</span>
-            <span><i class="line-key key-total"></i>合計</span>
+          <div class="chart-controls">
+            <div class="energy-selector" aria-label="表示する振り子">
+              <button class="active" type="button" aria-pressed="true" data-energy-index="0">1</button>
+              <button type="button" aria-pressed="false" data-energy-index="1">2</button>
+              <button type="button" aria-pressed="false" data-energy-index="2">3</button>
+            </div>
+            <div class="legend" aria-label="グラフの凡例">
+              <span><i class="line-key key-e1"></i>m1</span>
+              <span><i class="line-key key-e2"></i>m2</span>
+              <span><i class="line-key key-total"></i>合計</span>
+            </div>
           </div>
         </div>
         <div class="canvas-shell chart-shell">
@@ -135,6 +136,6 @@
       <p>摩擦・空気抵抗なし · RK4 Δt = 1/240 s · g = 9.80665 m/s²</p>
     </footer>
 
-    <script type="module" src="./app.js"></script>
+    <script type="module" src="./app.js?v=8"></script>
   </body>
 </html>

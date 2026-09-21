@@ -33,14 +33,15 @@ export class EnergyChart {
     if (removeCount > 0) history.splice(0, removeCount);
   }
 
-  render(currentTime) {
+  render(currentTime, selectedId = null) {
     const { width, height } = fitCanvas(this.canvas, this.context);
     this.context.clearRect(0, 0, width, height);
 
     const bounds = { left: 52, right: width - 18, top: 18, bottom: height - 34 };
     if (bounds.right <= bounds.left || bounds.bottom <= bounds.top) return;
 
-    const allPoints = [...this.histories.values()].flat();
+    const selectedHistory = selectedId === null ? [] : (this.histories.get(selectedId) ?? []);
+    const allPoints = selectedHistory;
     const maxEnergy = Math.max(
       1,
       ...allPoints.flatMap((point) => [point.energy1, point.energy2, point.totalEnergy]),
@@ -50,11 +51,9 @@ export class EnergyChart {
     const timeMin = timeMax - WINDOW_SECONDS;
 
     drawAxes(this.context, bounds, timeMin, timeMax, yMax);
-    for (const history of this.histories.values()) {
-      drawSeries(this.context, history, "energy1", COLORS.energy1, bounds, timeMin, timeMax, yMax);
-      drawSeries(this.context, history, "energy2", COLORS.energy2, bounds, timeMin, timeMax, yMax);
-      drawSeries(this.context, history, "totalEnergy", COLORS.totalEnergy, bounds, timeMin, timeMax, yMax);
-    }
+    drawSeries(this.context, selectedHistory, "energy1", COLORS.energy1, bounds, timeMin, timeMax, yMax);
+    drawSeries(this.context, selectedHistory, "energy2", COLORS.energy2, bounds, timeMin, timeMax, yMax);
+    drawSeries(this.context, selectedHistory, "totalEnergy", COLORS.totalEnergy, bounds, timeMin, timeMax, yMax);
   }
 }
 
